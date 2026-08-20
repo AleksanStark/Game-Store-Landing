@@ -45,6 +45,7 @@ export default defineNuxtConfig({
     public: {
       apiBase: process.env.NUXT_PUBLIC_API_BASE || "http://localhost:8000",
       mediaBase: process.env.NUXT_PUBLIC_MEDIA_BASE || "http://localhost:8080",
+      siteUrl: process.env.NUXT_PUBLIC_SITE_URL,
     },
   },
 

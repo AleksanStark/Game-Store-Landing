@@ -13,6 +13,7 @@ export default defineEventHandler(async (event) => {
       body: {
         chat_id: chat_id,
         text: message,
+        parse_mode: "HTML",
       },
     });
 

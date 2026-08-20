@@ -1,7 +1,8 @@
 <template>
   <div>
     <NuxtLayout />
-    <ChatWidget />
+
+    <AdminChatLauncher />
     <NuxtPage />
   </div>
 </template>

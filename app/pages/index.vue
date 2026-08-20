@@ -1,4 +1,5 @@
 <template>
+  <ChatWidget />
   <header>
     <nav class="wrap">
       <div class="logo">
