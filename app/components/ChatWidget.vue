@@ -41,7 +41,7 @@
               <span class="dot" />
             </div>
             <div>
-              <div class="chat-title">Korea Export · поддержка</div>
+              <div class="chat-title">TIM GAME STORE · поддержка</div>
               <div class="chat-status">
                 <span class="status-dot" :class="{ online: adminOnline }" />
                 {{

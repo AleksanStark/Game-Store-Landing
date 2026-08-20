@@ -1,7 +1,7 @@
 <template>
   <div class="login-shell">
     <div class="login-box">
-      <div class="login-brand"><span class="dot" />GAME STORE</div>
+      <div class="login-brand"><span class="dot" />TIM GAME STORE</div>
       <div class="login-eyebrow">Вход в админ-панель</div>
 
       <div v-if="error" class="login-error">{{ error }}</div>
