@@ -1,4 +1,5 @@
 <template>
+  <AdminChatLauncher />
   <section class="admin-products">
     <div class="admin-products-head">
       <div>
