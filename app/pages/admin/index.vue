@@ -447,6 +447,8 @@
 </template>
 
 <script setup lang="ts">
+import "~/assets/css/admin.css";
+
 import type { Product, Category, ProductImage, ProductOut } from "~/types";
 
 definePageMeta({ middleware: "admin" });

@@ -91,6 +91,7 @@
 </template>
 
 <script setup lang="ts">
+import "~/assets/css/admin.css";
 definePageMeta({ middleware: "admin" });
 
 interface ChatMessage {

@@ -798,14 +798,14 @@ nav.wrap {
 .contact-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 0;
+  gap: 8px;
   border-top: 1px solid var(--line);
   padding-top: 36px;
   max-width: 900px;
   margin: 0 auto;
   text-align: left;
 }
-.contact-grid div {
+.contact-grid > div {
   padding: 0 20px;
 }
 .contact-grid .k {

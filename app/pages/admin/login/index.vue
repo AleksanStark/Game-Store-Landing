@@ -42,6 +42,7 @@
 </template>
 
 <script setup lang="ts">
+import "~/assets/css/admin.css";
 const email = ref("");
 const password = ref("");
 const loading = ref(false);

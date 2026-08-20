@@ -41,6 +41,7 @@
 </template>
 
 <script setup lang="ts">
+import "~/assets/css/admin.css";
 // Основной сценарий теперь — ссылка из Telegram сразу на /admin/chat/{guestId}.
 // Эта страница — просто обзорный список на случай, если нужно найти диалог вручную.
 definePageMeta({ middleware: "admin" });

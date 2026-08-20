@@ -662,6 +662,7 @@
         <a href="https://wa.me/821032946606" class="btn btn-primary"
           >WhatsApp</a
         >
+
         <a
           href="https://t.me/konsoliv"
           target="_blank"
@@ -672,8 +673,12 @@
       </div>
       <div class="contact-grid">
         <div>
-          <div class="k">Телефон</div>
-          <div class="v">+82 10 0000 0000</div>
+          <div
+            class="font-mono text-[11px] text-[color:var(--text-dim)] uppercase tracking-[0.06em] pl-0 mb-2"
+          >
+            Телефон
+          </div>
+          <a href="tel:+821032946606" class="v">+82 10-3294-6606</a>
         </div>
         <div>
           <div class="k">Адрес</div>
@@ -686,6 +691,99 @@
         <div>
           <div class="k">Реквизиты</div>
           <div class="v">ИП / название компании</div>
+        </div>
+        <div>
+          <div class="k">Мы в соцсетях</div>
+          <div class="social-row">
+            <a
+              href="https://www.instagram.com/timplay_official?igsh=MWVoYW90cXhqdmd2cg%3D%3D&utm_source=qr"
+              target="_blank"
+              rel="noopener"
+              aria-label="Instagram"
+              title="Instagram"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="2" y="2" width="20" height="20" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle
+                  cx="17.5"
+                  cy="6.5"
+                  r="1"
+                  fill="currentColor"
+                  stroke="none"
+                />
+              </svg>
+            </a>
+
+            <a
+              href="https://www.tiktok.com/@timplay6606?_r=1&_t=ZS-98nKC6yzIF5"
+              target="_blank"
+              rel="noopener"
+              aria-label="TikTok"
+              title="TikTok"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M16 3v10.5a3.5 3.5 0 1 1-3.5-3.5" />
+                <path d="M16 3c0 2.5 2 4.5 4.5 4.5" />
+              </svg>
+            </a>
+
+            <a
+              href="https://www.facebook.com/share/g/14nbBxF7CmA/?mibextid=wwXIfr"
+              target="_blank"
+              rel="noopener"
+              aria-label="Facebook"
+              title="Facebook"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                />
+              </svg>
+            </a>
+
+            <a
+              href="https://t.me/timakonsoli"
+              target="_blank"
+              rel="noopener"
+              aria-label="Telegram-канал"
+              title="Telegram-канал"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M22 3 2 11l6.5 2.3M22 3l-3.5 18-9-6.7M22 3 8.5 13.3m0 0V19l3-3.2"
+                />
+              </svg>
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -1101,9 +1199,7 @@ const setCategory = function (cat: string) {
   category.value = cat;
 };
 
-const selectCategory = function (
-  cat: "featured" | "all" | "playstation" | "games" | "smartphones" | "dyson",
-) {
+const selectCategory = function (cat: string) {
   setCategory(cat);
   prodGrid.value?.scrollIntoView({ behavior: "smooth" });
 };
@@ -1135,3 +1231,26 @@ onMounted(async () => {
   categories.value = categoriesResponse.data.value;
 });
 </script>
+
+<style scoped>
+.social-row {
+  display: flex;
+  gap: 14px;
+  margin-top: 2px;
+}
+.social-row a {
+  color: var(--text-muted, #989c9f);
+  display: inline-flex;
+  transition:
+    color 0.15s ease,
+    transform 0.15s ease;
+}
+.social-row a:hover {
+  color: var(--accent, #c9974c);
+  transform: translateY(-1px);
+}
+.social-row svg {
+  width: 19px;
+  height: 19px;
+}
+</style>
