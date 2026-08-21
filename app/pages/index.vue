@@ -6,15 +6,15 @@
         <img src="/logo.svg" width="50" height="50" alt="logo" />
       </div>
       <div class="navlinks">
-        <a href="javascript:void(0)" @click="selectCategory('playstation')"
+        <a href="javascript:void(0)" @click="selectCategory('PlayStation')"
           >PlayStation</a
         >
         <a href="#computers">Компьютеры</a>
-        <a href="javascript:void(0)" @click="selectCategory('smartphones')"
+        <a href="javascript:void(0)" @click="selectCategory('Смартфоны')"
           >Смартфоны</a
         >
-        <a href="javascript:void(0)" @click="selectCategory('dyson')">Dyson</a>
-        <a href="javascript:void(0)" @click="selectCategory('games')">Игры</a>
+        <a href="javascript:void(0)" @click="selectCategory('Dyson')">Dyson</a>
+        <a href="javascript:void(0)" @click="selectCategory('Игры')">Игры</a>
         <a href="#b2b">Опт / B2B</a>
         <a href="#why">О компании</a>
         <a href="#contacts">Контакты</a>
@@ -41,7 +41,7 @@
         href="javascript:void(0)"
         @click="
           closeMenu();
-          selectCategory('smartphones');
+          selectCategory('Смартфоны');
         "
         >Смартфоны</a
       >
@@ -49,7 +49,7 @@
         href="javascript:void(0)"
         @click="
           closeMenu();
-          selectCategory('dyson');
+          selectCategory('Dyson');
         "
         >Dyson</a
       >
@@ -97,7 +97,10 @@
       </div>
 
       <div class="hero-cards">
-        <div class="prod-card" @click="openOrderModal('PS5 Pro', 'от $780')">
+        <div
+          class="prod-card"
+          @click="openOrderModal('PS5 Pro', 'от 1 081 392 ₩')"
+        >
           <div class="prod-photo">
             <span class="tag used">Б/у</span>
             <img
@@ -111,7 +114,7 @@
             <h4>PS5 Pro</h4>
             <div class="cond">Б/У, гарантия</div>
             <div class="prod-foot">
-              <span class="price">от $780</span>
+              <span class="price">от 1 081 392 ₩</span>
               <span class="link-btn">Заказать →</span>
             </div>
           </div>
@@ -195,7 +198,7 @@
         <div
           class="cat-card"
           id="playstation"
-          @click="selectCategory('playstation')"
+          @click="selectCategory('PlayStation')"
           style="cursor: pointer"
         >
           <svg
@@ -232,7 +235,7 @@
         <div
           class="cat-card"
           id="smartphones"
-          @click="selectCategory('smartphones')"
+          @click="selectCategory('Смартфоны')"
           style="cursor: pointer"
         >
           <svg
@@ -252,7 +255,7 @@
         <div
           class="cat-card"
           id="dyson"
-          @click="selectCategory('dyson')"
+          @click="selectCategory('Dyson')"
           style="cursor: pointer"
         >
           <svg
@@ -272,7 +275,7 @@
         <div
           class="cat-card"
           id="games"
-          @click="selectCategory('games')"
+          @click="selectCategory('Игры')"
           style="cursor: pointer"
         >
           <svg
@@ -415,10 +418,10 @@
 
       <div class="center-cta" id="showAllWrap">
         <a
-          v-if="category !== 'all'"
+          v-if="category !== 'Все'"
           href="javascript:void(0)"
           class="btn btn-ghost"
-          @click="setCategory('all')"
+          @click="setCategory('Все')"
           >Посмотреть всё наличие</a
         >
       </div>
@@ -658,7 +661,11 @@
         Напишите нам — проверим наличие в Корее и предложим подходящий вариант.
       </p>
       <div class="contact-btns">
-        <a href="#" class="btn btn-primary">KakaoTalk</a>
+        <a
+          href="https://www.facebook.com/share/g/14nbBxF7CmA/?mibextid=wwXIfr"
+          class="btn btn-primary"
+          >Facebook</a
+        >
         <a href="https://wa.me/821032946606" class="btn btn-primary"
           >WhatsApp</a
         >
@@ -723,7 +730,7 @@
             </a>
 
             <a
-              href="https://www.tiktok.com/@timplay6606?_r=1&_t=ZS-98nKC6yzIF5"
+              href="https://www.tiktok.com/@timplay6606?_r=1&_t=ZS-994Oq0nSqw8"
               target="_blank"
               rel="noopener"
               aria-label="TikTok"
@@ -927,18 +934,16 @@ const submitOrder = async function () {
 
 const config = useRuntimeConfig();
 
-// Формирует правильную ссылку на картинку
 const getImageUrl = (path: string) => {
   if (!path) return "";
 
-  // Если это уже полная ссылка или локальное превью
   if (path.startsWith("http") || path.startsWith("blob:")) {
     return path;
   }
 
-  // Используем mediaBase вместо apiBase
   const baseUrl = config.public.mediaBase.replace(/\/$/, "");
-  const imgPath = path.startsWith("/") ? path : `/${path}`;
+  const cleanPath = path.trim();
+  const imgPath = cleanPath.startsWith("/") ? cleanPath : `/${cleanPath}`;
 
   return `${baseUrl}${imgPath}`;
 };
@@ -953,236 +958,236 @@ const categoriesResponse = await useFetch<Category[]>("/categories", {
   default: () => [],
 });
 
-const PRODUCTS = [
-  {
-    cat: "playstation",
-    name: "PS5 Pro",
-    img: "/assets/ps5-pro.jpeg",
-    cond: "new",
-    price: "от $900 и выше",
-  },
+// const PRODUCTS = [
+//   {
+//     cat: "playstation",
+//     name: "PS5 Pro",
+//     img: "/assets/ps5-pro.jpeg",
+//     cond: "new",
+//     price: "от $900 и выше",
+//   },
 
-  {
-    cat: "playstation",
-    name: "PS5 Pro",
-    img: "/assets/ps5-pro.jpeg",
-    cond: "used",
-    price: "от $780 и выше",
-  },
-  {
-    cat: "playstation",
-    name: "PS5 Slim",
-    img: "/assets/ps5-digital-edition.jpeg",
-    cond: "used",
-    price: "от $400 и выше",
-  },
+//   {
+//     cat: "playstation",
+//     name: "PS5 Pro",
+//     img: "/assets/ps5-pro.jpeg",
+//     cond: "used",
+//     price: "от $780 и выше",
+//   },
+//   {
+//     cat: "playstation",
+//     name: "PS5 Slim",
+//     img: "/assets/ps5-digital-edition.jpeg",
+//     cond: "used",
+//     price: "от $400 и выше",
+//   },
 
-  {
-    cat: "playstation",
-    name: "PlayStation VR2",
-    img: "/assets/ps-vr-2.jpeg",
-    cond: "new",
-    price: "цена от $400 и выше",
-  },
+//   {
+//     cat: "playstation",
+//     name: "PlayStation VR2",
+//     img: "/assets/ps-vr-2.jpeg",
+//     cond: "new",
+//     price: "цена от $400 и выше",
+//   },
 
-  {
-    cat: "playstation",
-    name: "PlayStation VR2",
-    img: "/assets/ps-vr-2.jpeg",
-    cond: "used",
-    price: "от $400 и выше",
-  },
+//   {
+//     cat: "playstation",
+//     name: "PlayStation VR2",
+//     img: "/assets/ps-vr-2.jpeg",
+//     cond: "used",
+//     price: "от $400 и выше",
+//   },
 
-  {
-    cat: "playstation",
-    name: "PS5 Disc Edition",
-    img: "/assets/ps5-disc-edition.jpeg",
-    cond: "new",
-    price: "от $400 и выше",
-  },
+//   {
+//     cat: "playstation",
+//     name: "PS5 Disc Edition",
+//     img: "/assets/ps5-disc-edition.jpeg",
+//     cond: "new",
+//     price: "от $400 и выше",
+//   },
 
-  {
-    cat: "playstation",
-    name: "PS5 Disc Edition",
-    img: "/assets/ps5-disc-edition.jpeg",
-    cond: "used",
-    price: "от $400 и выше",
-  },
+//   {
+//     cat: "playstation",
+//     name: "PS5 Disc Edition",
+//     img: "/assets/ps5-disc-edition.jpeg",
+//     cond: "used",
+//     price: "от $400 и выше",
+//   },
 
-  {
-    cat: "playstation",
-    name: "PS5 Slim Disc Edition (новая)",
-    img: "/assets/ps5-slim-disc-edition.jpg",
-    cond: "new",
-    price: "от $600 и выше",
-  },
+//   {
+//     cat: "playstation",
+//     name: "PS5 Slim Disc Edition (новая)",
+//     img: "/assets/ps5-slim-disc-edition.jpg",
+//     cond: "new",
+//     price: "от $600 и выше",
+//   },
 
-  {
-    cat: "playstation",
-    name: "PS5 Slim Disc Edition (Б/У)",
-    img: "/assets/ps5-slim-disc-edition.jpg",
-    cond: "used",
-    price: "от $400 и выше",
-  },
+//   {
+//     cat: "playstation",
+//     name: "PS5 Slim Disc Edition (Б/У)",
+//     img: "/assets/ps5-slim-disc-edition.jpg",
+//     cond: "used",
+//     price: "от $400 и выше",
+//   },
 
-  {
-    cat: "playstation",
-    name: "PS5 Slim Digital Edition (новая)",
-    img: "/assets/ps5-slim-digital-edition.jpg",
-    cond: "new",
-    price: "от $600 и выше",
-  },
+//   {
+//     cat: "playstation",
+//     name: "PS5 Slim Digital Edition (новая)",
+//     img: "/assets/ps5-slim-digital-edition.jpg",
+//     cond: "new",
+//     price: "от $600 и выше",
+//   },
 
-  {
-    cat: "playstation",
-    name: "PS5 Slim Digital Edition (Б/У)",
-    img: "/assets/ps5-slim-digital-edition.jpg",
-    cond: "used",
-    price: "от $400 и выше",
-  },
+//   {
+//     cat: "playstation",
+//     name: "PS5 Slim Digital Edition (Б/У)",
+//     img: "/assets/ps5-slim-digital-edition.jpg",
+//     cond: "used",
+//     price: "от $400 и выше",
+//   },
 
-  {
-    cat: "playstation",
-    name: "PS4 Slim",
-    img: "/assets/ps4-slim.jpg",
-    cond: "used",
-    price: "от $150 и выше",
-  },
+//   {
+//     cat: "playstation",
+//     name: "PS4 Slim",
+//     img: "/assets/ps4-slim.jpg",
+//     cond: "used",
+//     price: "от $150 и выше",
+//   },
 
-  {
-    cat: "playstation",
-    name: "PS4 Pro",
-    img: "/assets/ps4-pro.jpg",
-    cond: "new",
-    price: "от $220 и выше",
-  },
+//   {
+//     cat: "playstation",
+//     name: "PS4 Pro",
+//     img: "/assets/ps4-pro.jpg",
+//     cond: "new",
+//     price: "от $220 и выше",
+//   },
 
-  {
-    cat: "playstation",
-    name: "PS4 Pro",
-    img: "/assets/ps4-pro.jpg",
-    cond: "used",
-    price: "от $220 и выше",
-  },
-  {
-    cat: "games",
-    name: "Ghost of Tsushima (диск)",
-    img: "/assets/ps5-ghost-of-tsushima-disk.jpg",
-    cond: "new",
-    price: "$45",
-  },
-  {
-    cat: "games",
-    name: "The Last of Us Part II (диск)",
-    img: "/assets/ps5-the-last-of-us-two.jpg",
-    cond: "used",
-    price: "$25",
-  },
-  {
-    cat: "games",
-    name: "PlayStation-аккаунт (набор игр)",
-    img: "/assets/playstation-account-games.jpg",
-    cond: "new",
-    price: "по запросу",
-  },
-  {
-    cat: "games",
-    name: "EA Sports FC 25 (диск)",
-    img: "/assets/ps5-fc25.jpg",
-    cond: "used",
-    price: "$20",
-  },
-  // {
-  //   cat: "computers",
-  //   name: "Gaming PC — RTX 4060",
-  //   cond: "new",
-  //   price: "$980",
-  // },
-  // {
-  //   cat: "computers",
-  //   name: "Gaming PC — RTX 4070 Ti",
-  //   cond: "new",
-  //   price: "$1 650",
-  // },
-  // {
-  //   cat: "computers",
-  //   name: "Рабочая станция i7",
-  //   cond: "used",
-  //   price: "$700",
-  // },
-  {
-    cat: "smartphones",
-    name: "iPhone 17 Pro",
-    img: "/assets/iphone-17-pro.jpg",
-    cond: "new",
-    price: "от $1050",
-  },
-  {
-    cat: "smartphones",
-    name: "iPhone 15",
-    img: "/assets/iphone-15.jpg",
-    cond: "used",
-    price: "от $520",
-  },
-  {
-    cat: "smartphones",
-    name: "Samsung Galaxy S25",
-    img: "/assets/samsung-s25.jpg",
-    cond: "used",
-    price: "от $610",
-  },
-  {
-    cat: "smartphones",
-    name: "Samsung Galaxy S25 Ultra",
-    img: "/assets/samsung-s25-ultra.jpg",
-    cond: "new",
-    price: "от $950",
-  },
-  {
-    cat: "dyson",
-    name: "Dyson Airwrap",
-    img: "/assets/dyson-airwrap.jpg",
-    cond: "new",
-    price: "от $430",
-  },
-  {
-    cat: "dyson",
-    name: "Dyson V15 (пылесос)",
-    img: "/assets/dyson-v15.jpg",
-    cond: "used",
-    price: "от $310",
-  },
-  {
-    cat: "dyson",
-    name: "Dyson Supersonic",
-    img: "/assets/dyson-supersonic.jpg",
-    cond: "new",
-    price: "от $390",
-  },
-] as const;
+//   {
+//     cat: "playstation",
+//     name: "PS4 Pro",
+//     img: "/assets/ps4-pro.jpg",
+//     cond: "used",
+//     price: "от $220 и выше",
+//   },
+//   {
+//     cat: "games",
+//     name: "Ghost of Tsushima (диск)",
+//     img: "/assets/ps5-ghost-of-tsushima-disk.jpg",
+//     cond: "new",
+//     price: "$45",
+//   },
+//   {
+//     cat: "games",
+//     name: "The Last of Us Part II (диск)",
+//     img: "/assets/ps5-the-last-of-us-two.jpg",
+//     cond: "used",
+//     price: "$25",
+//   },
+//   {
+//     cat: "games",
+//     name: "PlayStation-аккаунт (набор игр)",
+//     img: "/assets/playstation-account-games.jpg",
+//     cond: "new",
+//     price: "по запросу",
+//   },
+//   {
+//     cat: "games",
+//     name: "EA Sports FC 25 (диск)",
+//     img: "/assets/ps5-fc25.jpg",
+//     cond: "used",
+//     price: "$20",
+//   },
+//   // {
+//   //   cat: "computers",
+//   //   name: "Gaming PC — RTX 4060",
+//   //   cond: "new",
+//   //   price: "$980",
+//   // },
+//   // {
+//   //   cat: "computers",
+//   //   name: "Gaming PC — RTX 4070 Ti",
+//   //   cond: "new",
+//   //   price: "$1 650",
+//   // },
+//   // {
+//   //   cat: "computers",
+//   //   name: "Рабочая станция i7",
+//   //   cond: "used",
+//   //   price: "$700",
+//   // },
+//   {
+//     cat: "smartphones",
+//     name: "iPhone 17 Pro",
+//     img: "/assets/iphone-17-pro.jpg",
+//     cond: "new",
+//     price: "от $1050",
+//   },
+//   {
+//     cat: "smartphones",
+//     name: "iPhone 15",
+//     img: "/assets/iphone-15.jpg",
+//     cond: "used",
+//     price: "от $520",
+//   },
+//   {
+//     cat: "smartphones",
+//     name: "Samsung Galaxy S25",
+//     img: "/assets/samsung-s25.jpg",
+//     cond: "used",
+//     price: "от $610",
+//   },
+//   {
+//     cat: "smartphones",
+//     name: "Samsung Galaxy S25 Ultra",
+//     img: "/assets/samsung-s25-ultra.jpg",
+//     cond: "new",
+//     price: "от $950",
+//   },
+//   {
+//     cat: "dyson",
+//     name: "Dyson Airwrap",
+//     img: "/assets/dyson-airwrap.jpg",
+//     cond: "new",
+//     price: "от $430",
+//   },
+//   {
+//     cat: "dyson",
+//     name: "Dyson V15 (пылесос)",
+//     img: "/assets/dyson-v15.jpg",
+//     cond: "used",
+//     price: "от $310",
+//   },
+//   {
+//     cat: "dyson",
+//     name: "Dyson Supersonic",
+//     img: "/assets/dyson-supersonic.jpg",
+//     cond: "new",
+//     price: "от $390",
+//   },
+// ] as const;
 
-const CATEGORIES = [
-  ["featured", "Популярное"],
-  ["all", "Все"],
-  ["playstation", "PlayStation"],
-  ["games", "Игры"],
-  // ["computers", "Компьютеры"],
-  ["smartphones", "Смартфоны"],
-  ["dyson", "Dyson"],
-] as const;
+// const CATEGORIES = [
+//   ["featured", "Популярное"],
+//   ["all", "Все"],
+//   ["playstation", "PlayStation"],
+//   ["games", "Игры"],
+//   // ["computers", "Компьютеры"],
+//   ["smartphones", "Смартфоны"],
+//   ["dyson", "Dyson"],
+// ] as const;
 
 const list = computed(() => {
-  if (category.value === "популярное")
+  if (category.value.toLowerCase() === "популярное")
     return products.value.filter(
       (product) =>
-        (product.category_name === "playstation" ||
-          product.category_name === "games") &&
-        (condition.value === "all" || product.condition === condition.value),
+        (product.category_name === "PlayStation" ||
+          product.category_name.toLowerCase() === "игры") &&
+        (condition.value === "Все" || product.condition === condition.value),
     );
   return products.value.filter((product) => {
     const matchesCategory =
-      category.value === "all" ||
-      category.value === "featured" ||
+      category.value === "Все" ||
+      category.value.toLowerCase() === "популярное" ||
       product.category_name === category.value;
 
     const matchesCnodition =
