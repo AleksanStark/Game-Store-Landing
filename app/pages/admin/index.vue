@@ -493,7 +493,7 @@ const categoriesResponse = await useFetch<Category[]>("/categories", {
 const list = computed(() =>
   products.value.filter((p) => {
     const matchCat =
-      category.value === "all" || p.category_name === category.value;
+      category.value === "Все" || p.category_name === category.value;
     const matchCond =
       condition.value === "all" || p.condition === condition.value;
     return matchCat && matchCond;
