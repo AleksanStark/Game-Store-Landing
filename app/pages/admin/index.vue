@@ -454,7 +454,7 @@ import type { Product, Category, ProductImage, ProductOut } from "~/types";
 definePageMeta({ middleware: "admin" });
 
 const condition = ref<"all" | "new" | "used">("all");
-const category = ref("all");
+const category = ref("Все");
 const categories = ref<Category[]>([]);
 const products = ref<ProductOut[]>([]);
 const setCondition = (c: typeof condition.value) => (condition.value = c);
@@ -617,7 +617,7 @@ const loadCategories = async () => {
   categories.value = categoriesResponse.data.value;
 
   const playstation = categories.value.find(
-    (category) => category.name.toLocaleLowerCase() === "playstation",
+    (category) => category.name.toLocaleLowerCase() === "PlayStation",
   );
 
   if (playstation) {
