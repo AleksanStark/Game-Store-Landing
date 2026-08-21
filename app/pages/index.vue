@@ -1182,7 +1182,7 @@ const list = computed(() => {
       (product) =>
         (product.category_name === "PlayStation" ||
           product.category_name === "Игры") &&
-        (condition.value === "Все" || product.condition === condition.value),
+        (condition.value === "all" || product.condition === condition.value),
     );
   return products.value.filter((product) => {
     const matchesCategory =

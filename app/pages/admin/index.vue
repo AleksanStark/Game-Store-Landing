@@ -490,16 +490,25 @@ const categoriesResponse = await useFetch<Category[]>("/categories", {
   default: () => [],
 });
 
-const list = computed(() =>
-  products.value.filter((p) => {
-    const matchCat =
-      category.value === "Все" || p.category_name === category.value;
-    const matchCond =
-      condition.value === "all" || p.condition === condition.value;
-    return matchCat && matchCond;
-  }),
-);
+const list = computed(() => {
+  if (category.value === "Популярное")
+    return products.value.filter(
+      (product) =>
+        (product.category_name === "PlayStation" ||
+          product.category_name === "Игры") &&
+        (condition.value === "all" || product.condition === condition.value),
+    );
+  return products.value.filter((product) => {
+    const matchesCategory =
+      category.value === "Все" ||
+      category.value === "Популярное" ||
+      product.category_name === category.value;
 
+    const matchesCnodition =
+      condition.value === "all" || product.condition === condition.value;
+    return matchesCategory && matchesCnodition;
+  });
+});
 // ---------- МОДАЛКА ----------
 const isModalOpen = ref(false);
 const isCategoryModalOpen = ref(false);
