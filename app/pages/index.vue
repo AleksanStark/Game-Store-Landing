@@ -1234,6 +1234,14 @@ const GoToComputers = function () {
 onMounted(async () => {
   products.value = productsResponse.data.value;
   categories.value = categoriesResponse.data.value;
+
+  console.log("PRODUCTS:", products.value);
+  console.log("CATEGORIES:", categories.value);
+
+  console.log(
+    "CATEGORY NAMES:",
+    products.value.map((p) => p.category_name),
+  );
 });
 </script>
 
