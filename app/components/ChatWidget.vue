@@ -223,6 +223,7 @@ const send = async () => {
   });
 
   draft.value = "";
+  console.log(message);
 };
 
 onBeforeUnmount(() => {
