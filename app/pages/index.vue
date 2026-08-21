@@ -40,8 +40,8 @@
       <a
         href="javascript:void(0)"
         @click="
-          closeMenu();
           selectCategory('Смартфоны');
+          closeMenu();
         "
         >Смартфоны</a
       >
