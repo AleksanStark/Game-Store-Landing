@@ -211,7 +211,7 @@ const send = async () => {
   const body = draft.value.trim();
   if (!body || !ws || ws.readyState !== WebSocket.OPEN) return;
   ws.send(JSON.stringify({ body }));
-  const adminUrl = `/admin/chat/${guestId}`;
+  const adminUrl = `${config.public.siteUrl}/admin/chat/${guestId}`;
   console.log(adminUrl);
   const message =
     `Новое сообщение с сайта\n \n` + `<a href="${adminUrl}">Открыть чат</a>`;
