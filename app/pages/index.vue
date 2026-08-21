@@ -688,10 +688,10 @@
           <div class="k">Часы работы</div>
           <div class="v">Пн–Сб, 10:00–19:00 (KST)</div>
         </div>
-        <div>
+        <!-- <div>
           <div class="k">Реквизиты</div>
           <div class="v">ИП / название компании</div>
-        </div>
+        </div> -->
         <div>
           <div class="k">Мы в соцсетях</div>
           <div class="social-row">
@@ -792,7 +792,7 @@
   <footer>
     <div class="wrap">
       <span id="copyright-text"
-        >© {{ new Date().getFullYear() }} GAME STORE</span
+        >© {{ new Date().getFullYear() }} TIM GAME STORE</span
       >
     </div>
   </footer>
