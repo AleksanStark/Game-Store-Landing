@@ -48,12 +48,19 @@
       <a
         href="javascript:void(0)"
         @click="
-          closeMenu();
           selectCategory('Dyson');
+          closeMenu();
         "
         >Dyson</a
       >
-      <a href="#games" @click="closeMenu()">Игры</a>
+      <a
+        href="#games"
+        @click="
+          setCategory('Игры');
+          closeMenu();
+        "
+        >Игры</a
+      >
       <a href="#b2b" @click="closeMenu()">Опт / B2B</a>
       <a href="#why" @click="closeMenu()">О компании</a>
       <a href="#contacts" @click="closeMenu()">Контакты</a>
