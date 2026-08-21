@@ -1177,17 +1177,17 @@ const categoriesResponse = await useFetch<Category[]>("/categories", {
 // ] as const;
 
 const list = computed(() => {
-  if (category.value.toLowerCase() === "популярное")
+  if (category.value === "Популярное")
     return products.value.filter(
       (product) =>
         (product.category_name === "PlayStation" ||
-          product.category_name.toLowerCase() === "игры") &&
+          product.category_name === "Игры") &&
         (condition.value === "Все" || product.condition === condition.value),
     );
   return products.value.filter((product) => {
     const matchesCategory =
       category.value === "Все" ||
-      category.value.toLowerCase() === "популярное" ||
+      category.value === "Популярное" ||
       product.category_name === category.value;
 
     const matchesCnodition =
