@@ -425,7 +425,7 @@
             </div>
 
             <div class="prod-foot">
-              <span class="price"> от ${{ product.price }} и выше</span>
+              <span class="price"> от ₩{{ product.price }} и выше</span>
               <span class="link-btn"> Заказать →</span>
             </div>
           </div>
@@ -980,7 +980,7 @@ const categoriesResponse = await useFetch<Category[]>("/categories", {
 //     name: "PS5 Pro",
 //     img: "/assets/ps5-pro.jpeg",
 //     cond: "new",
-//     price: "от $900 и выше",
+//     price: "от  ₩900 и выше",
 //   },
 
 //   {
@@ -988,14 +988,14 @@ const categoriesResponse = await useFetch<Category[]>("/categories", {
 //     name: "PS5 Pro",
 //     img: "/assets/ps5-pro.jpeg",
 //     cond: "used",
-//     price: "от $780 и выше",
+//     price: "от  ₩780 и выше",
 //   },
 //   {
 //     cat: "playstation",
 //     name: "PS5 Slim",
 //     img: "/assets/ps5-digital-edition.jpeg",
 //     cond: "used",
-//     price: "от $400 и выше",
+//     price: "от  ₩400 и выше",
 //   },
 
 //   {
@@ -1003,7 +1003,7 @@ const categoriesResponse = await useFetch<Category[]>("/categories", {
 //     name: "PlayStation VR2",
 //     img: "/assets/ps-vr-2.jpeg",
 //     cond: "new",
-//     price: "цена от $400 и выше",
+//     price: "цена от  ₩400 и выше",
 //   },
 
 //   {
@@ -1011,7 +1011,7 @@ const categoriesResponse = await useFetch<Category[]>("/categories", {
 //     name: "PlayStation VR2",
 //     img: "/assets/ps-vr-2.jpeg",
 //     cond: "used",
-//     price: "от $400 и выше",
+//     price: "от  ₩400 и выше",
 //   },
 
 //   {
@@ -1019,7 +1019,7 @@ const categoriesResponse = await useFetch<Category[]>("/categories", {
 //     name: "PS5 Disc Edition",
 //     img: "/assets/ps5-disc-edition.jpeg",
 //     cond: "new",
-//     price: "от $400 и выше",
+//     price: "от  ₩400 и выше",
 //   },
 
 //   {
@@ -1027,7 +1027,7 @@ const categoriesResponse = await useFetch<Category[]>("/categories", {
 //     name: "PS5 Disc Edition",
 //     img: "/assets/ps5-disc-edition.jpeg",
 //     cond: "used",
-//     price: "от $400 и выше",
+//     price: "от  ₩400 и выше",
 //   },
 
 //   {
@@ -1035,7 +1035,7 @@ const categoriesResponse = await useFetch<Category[]>("/categories", {
 //     name: "PS5 Slim Disc Edition (новая)",
 //     img: "/assets/ps5-slim-disc-edition.jpg",
 //     cond: "new",
-//     price: "от $600 и выше",
+//     price: "от  ₩600 и выше",
 //   },
 
 //   {
@@ -1043,7 +1043,7 @@ const categoriesResponse = await useFetch<Category[]>("/categories", {
 //     name: "PS5 Slim Disc Edition (Б/У)",
 //     img: "/assets/ps5-slim-disc-edition.jpg",
 //     cond: "used",
-//     price: "от $400 и выше",
+//     price: "от  ₩400 и выше",
 //   },
 
 //   {
@@ -1051,7 +1051,7 @@ const categoriesResponse = await useFetch<Category[]>("/categories", {
 //     name: "PS5 Slim Digital Edition (новая)",
 //     img: "/assets/ps5-slim-digital-edition.jpg",
 //     cond: "new",
-//     price: "от $600 и выше",
+//     price: "от  ₩600 и выше",
 //   },
 
 //   {
@@ -1059,7 +1059,7 @@ const categoriesResponse = await useFetch<Category[]>("/categories", {
 //     name: "PS5 Slim Digital Edition (Б/У)",
 //     img: "/assets/ps5-slim-digital-edition.jpg",
 //     cond: "used",
-//     price: "от $400 и выше",
+//     price: "от  ₩400 и выше",
 //   },
 
 //   {
@@ -1067,7 +1067,7 @@ const categoriesResponse = await useFetch<Category[]>("/categories", {
 //     name: "PS4 Slim",
 //     img: "/assets/ps4-slim.jpg",
 //     cond: "used",
-//     price: "от $150 и выше",
+//     price: "от  ₩150 и выше",
 //   },
 
 //   {
@@ -1075,7 +1075,7 @@ const categoriesResponse = await useFetch<Category[]>("/categories", {
 //     name: "PS4 Pro",
 //     img: "/assets/ps4-pro.jpg",
 //     cond: "new",
-//     price: "от $220 и выше",
+//     price: "от  ₩220 и выше",
 //   },
 
 //   {
@@ -1083,7 +1083,7 @@ const categoriesResponse = await useFetch<Category[]>("/categories", {
 //     name: "PS4 Pro",
 //     img: "/assets/ps4-pro.jpg",
 //     cond: "used",
-//     price: "от $220 и выше",
+//     price: "от  ₩220 и выше",
 //   },
 //   {
 //     cat: "games",
@@ -1136,49 +1136,49 @@ const categoriesResponse = await useFetch<Category[]>("/categories", {
 //     name: "iPhone 17 Pro",
 //     img: "/assets/iphone-17-pro.jpg",
 //     cond: "new",
-//     price: "от $1050",
+//     price: "от  ₩1050",
 //   },
 //   {
 //     cat: "smartphones",
 //     name: "iPhone 15",
 //     img: "/assets/iphone-15.jpg",
 //     cond: "used",
-//     price: "от $520",
+//     price: "от  ₩520",
 //   },
 //   {
 //     cat: "smartphones",
 //     name: "Samsung Galaxy S25",
 //     img: "/assets/samsung-s25.jpg",
 //     cond: "used",
-//     price: "от $610",
+//     price: "от  ₩610",
 //   },
 //   {
 //     cat: "smartphones",
 //     name: "Samsung Galaxy S25 Ultra",
 //     img: "/assets/samsung-s25-ultra.jpg",
 //     cond: "new",
-//     price: "от $950",
+//     price: "от  ₩950",
 //   },
 //   {
 //     cat: "dyson",
 //     name: "Dyson Airwrap",
 //     img: "/assets/dyson-airwrap.jpg",
 //     cond: "new",
-//     price: "от $430",
+//     price: "от  ₩430",
 //   },
 //   {
 //     cat: "dyson",
 //     name: "Dyson V15 (пылесос)",
 //     img: "/assets/dyson-v15.jpg",
 //     cond: "used",
-//     price: "от $310",
+//     price: "от  ₩310",
 //   },
 //   {
 //     cat: "dyson",
 //     name: "Dyson Supersonic",
 //     img: "/assets/dyson-supersonic.jpg",
 //     cond: "new",
-//     price: "от $390",
+//     price: "от  ₩390",
 //   },
 // ] as const;
 

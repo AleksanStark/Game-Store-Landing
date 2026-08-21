@@ -119,7 +119,7 @@
           </div>
 
           <div class="prod-foot">
-            <span class="price"> цена от ${{ product.price }} и выше</span>
+            <span class="price"> цена от ₩{{ product.price }} и выше</span>
           </div>
 
           <!-- АДМИН-ДЕЙСТВИЯ: под заголовком и ценой -->
@@ -215,7 +215,7 @@
                 <input
                   v-model="form.price"
                   type="text"
-                  placeholder="от $780 или «по запросу»"
+                  placeholder="от  ₩780 или «по запросу»"
                   required
                 />
               </div>
@@ -325,7 +325,7 @@
                 <input
                   v-model="form.price"
                   type="text"
-                  placeholder="от $780 или «по запросу»"
+                  placeholder="от  ₩780 или «по запросу»"
                   required
                 />
               </div>
