@@ -682,7 +682,7 @@
         </div>
         <div>
           <div class="k">Адрес</div>
-          <div class="v">Gwangju, South Korea</div>
+          <div class="v">광주광역시 광산구 산정공원로 63-1</div>
         </div>
         <div>
           <div class="k">Часы работы</div>
