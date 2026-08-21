@@ -358,6 +358,22 @@
         </div>
         <div class="pill-row" id="categoryPills">
           <button
+            @click="setCategory('Популярное')"
+            class="pill-btn"
+            :class="{ active: category === 'Популярное' }"
+          >
+            Популярное
+          </button>
+
+          <button
+            @click="setCategory('Все')"
+            class="pill-btn"
+            :class="{ active: category === 'Все' }"
+          >
+            Все
+          </button>
+
+          <button
             @click="setCategory(product_category.name)"
             class="pill-btn"
             :class="{ active: category === product_category.name }"
