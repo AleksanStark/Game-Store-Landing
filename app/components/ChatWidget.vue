@@ -126,7 +126,7 @@ interface ChatMessage {
 
 const config = useRuntimeConfig();
 
-const WS_BASE = config.public.apiBase.replace(/^http/, "ws");
+const WS_BASE = config.public.apiBase.replace(/^https?/, "wss");
 
 const isOpen = ref(false);
 const connected = ref(false);
