@@ -32,7 +32,7 @@
   </header>
 
   <!-- MOBILE MENU -->
-  <div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu" :class="{ open: modalIsOpen }" id="mobileMenu">
     <button class="mobile-menu-close" @click="closeMenu()">&times;</button>
     <nav class="mobile-links">
       <a href="#playstation" @click="closeMenu()">PlayStation</a>
