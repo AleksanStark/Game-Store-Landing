@@ -397,7 +397,7 @@
           class="prod-card"
           v-for="product in list"
           :key="product.id"
-          @click="openOrderModal(product.name, ` от ₩ ${product.price} и выше`)"
+          @click="openOrderModal(product.name, ` ${product.price}`)"
         >
           <div class="prod-photo">
             <span
@@ -432,7 +432,20 @@
             </div>
 
             <div class="prod-foot">
-              <span class="price"> от ₩{{ product.price }} и выше</span>
+              <div class="flex items-center gap-2">
+                <span class="price">от</span>
+                <img
+                  class="shrink-0 translate-y-[0.6px]"
+                  src="/assets/korea-won.png"
+                  width="16"
+                  height="16"
+                  alt=""
+                />
+                <span class="price">{{ product.price }}</span>
+
+                <span class="price">и выше</span>
+              </div>
+
               <span class="link-btn"> Заказать →</span>
             </div>
           </div>
@@ -838,7 +851,9 @@
       <button class="modal-close" @click="closeOrderModal()">&times;</button>
       <div class="modal-kicker">Заявка на заказ</div>
       <h3 id="modalProductName">{{ productName }}</h3>
-      <div class="modal-price" id="modalProductPrice">{{ productPrice }}</div>
+      <div class="flex" id="modalProductPrice">
+        <span class="modal-price">от {{ productPrice }} Вон</span>
+      </div>
 
       <form id="orderForm" @submit.prevent="submitOrder()">
         <div class="field">
