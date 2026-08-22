@@ -119,7 +119,19 @@
           </div>
 
           <div class="prod-foot">
-            <span class="price"> цена от ₩{{ product.price }} и выше</span>
+            <div class="flex items-center gap-2">
+              <span class="price">от</span>
+              <img
+                class="shrink-0 translate-y-[0.6px]"
+                src="/assets/korea-won.png"
+                width="16"
+                height="16"
+                alt=""
+              />
+              <span class="price">{{ product.price }}</span>
+
+              <span class="price">и выше</span>
+            </div>
           </div>
 
           <!-- АДМИН-ДЕЙСТВИЯ: под заголовком и ценой -->
@@ -179,6 +191,7 @@
             <div class="pm-field">
               <label>Название</label>
               <input
+                class="pm-field-input"
                 v-model="form.name"
                 type="text"
                 placeholder="Например: PS5 Slim Digital Edition"
@@ -210,9 +223,17 @@
             </div>
 
             <div class="pm-row">
-              <div class="pm-field">
+              <div class="pm-field relative">
                 <label>Цена</label>
+                <img
+                  class="shrink-0 absolute top-10 left-3"
+                  src="/assets/korea-won.png"
+                  width="16"
+                  height="16"
+                  alt=""
+                />
                 <input
+                  class="pm-field-input price-input"
                   v-model="form.price"
                   type="text"
                   placeholder="от  ₩780 или «по запросу»"
@@ -291,6 +312,7 @@
             <div class="pm-field">
               <label>Название</label>
               <input
+                class="pm-field-input"
                 v-model="form.name"
                 type="text"
                 placeholder="Например: PS5 Slim Digital Edition"
@@ -323,13 +345,23 @@
 
             <div class="pm-row">
               <div class="pm-field">
-                <label>Цена</label>
-                <input
-                  v-model="form.price"
-                  type="text"
-                  placeholder="от  ₩780 или «по запросу»"
-                  required
-                />
+                <div class="pm-field relative">
+                  <label>Цена</label>
+                  <img
+                    class="shrink-0 absolute top-10 left-3"
+                    src="/assets/korea-won.png"
+                    width="16"
+                    height="16"
+                    alt=""
+                  />
+                  <input
+                    class="pm-field-input price-input"
+                    v-model="form.price"
+                    type="text"
+                    placeholder="от ₩780 или «по запросу»"
+                    required
+                  />
+                </div>
               </div>
             </div>
 
@@ -411,6 +443,7 @@
             <div class="pm-field">
               <label>Название</label>
               <input
+                class="pm-field-input"
                 v-model="form.name"
                 type="text"
                 placeholder="Например: Playstation"
@@ -532,7 +565,7 @@ const emptyForm = () => ({
   file: null as File | null,
   category_id: null as number | null,
   condition: "new",
-  price: "₩0",
+  price: "0",
   img: "",
 });
 const form = reactive(emptyForm());
@@ -558,7 +591,7 @@ const openCreateCategoryModal = () => {
 
 const openEditModal = async (product: ProductOut) => {
   Object.assign(form, { ...product });
-  form.price = `₩${product.price}`;
+  form.price = `${product.price}`;
   console.log(form.img_id);
   isEditing.value = true;
   editingSku.value = product.id;
@@ -958,7 +991,7 @@ onMounted(async () => {
   color: var(--text-muted, #989c9f);
   margin-bottom: 7px;
 }
-.pm-field input,
+
 .pm-field select {
   width: 100%;
   background: var(--bg, #0f1113);
@@ -973,6 +1006,22 @@ onMounted(async () => {
 .pm-field select:focus {
   outline: none;
   border-color: var(--accent, #c9974c);
+}
+
+.pm-field-input {
+  width: 100%;
+  background: var(--bg, #0f1113);
+  border: 1px solid var(--line-strong, rgba(255, 255, 255, 0.16));
+  color: var(--text, #f2f1ec);
+  padding: 10px 12px;
+  font-family: "Inter", sans-serif;
+  font-size: 13.5px;
+  border-radius: 2px;
+}
+
+.price-input {
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 .pm-dropzone {
