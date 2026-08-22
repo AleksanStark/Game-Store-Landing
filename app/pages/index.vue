@@ -397,7 +397,9 @@
           class="prod-card"
           v-for="product in list"
           :key="product.id"
-          @click="openOrderModal(product.name, String(product.price))"
+          @click="
+            openOrderModal(product.name, ` от ₩${String(product.price)} и выше`)
+          "
         >
           <div class="prod-photo">
             <span

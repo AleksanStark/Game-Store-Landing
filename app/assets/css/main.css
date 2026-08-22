@@ -252,8 +252,8 @@ nav.wrap {
 
 .hero-cards {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  grid-template-columns: 1fr;
+  gap: 24px;
 }
 .hero-cards .prod-card {
   height: 100%;

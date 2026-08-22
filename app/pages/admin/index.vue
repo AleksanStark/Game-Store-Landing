@@ -533,6 +533,8 @@ const emptyForm = () => ({
 });
 const form = reactive(emptyForm());
 
+const cat = categories.value.find((cat) => cat.name === "PlayStation");
+
 const openCreateModal = () => {
   isEditing.value = false;
   editingSku.value = null;
@@ -563,7 +565,7 @@ const closeModal = () => {
   editingImages.value = [];
   ((form.name = ""),
     (form.price = ""),
-    (form.category_id = 1),
+    (form.category_id = cat?.id ? cat.id : 7),
     (form.condition = "new"),
     (form.img = ""));
 };
