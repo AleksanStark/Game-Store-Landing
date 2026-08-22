@@ -397,9 +397,7 @@
           class="prod-card"
           v-for="product in list"
           :key="product.id"
-          @click="
-            openOrderModal(product.name, ` от ₩${String(product.price)} и выше`)
-          "
+          @click="openOrderModal(product.name, ` от ₩ ${product.price} и выше`)"
         >
           <div class="prod-photo">
             <span
@@ -420,7 +418,7 @@
             <h4>{{ product.name }}</h4>
             <h5
               class="text-xs font-bold mb-2"
-              v-if="product.category_name === 'playstation'"
+              v-if="product.category_name === 'PlayStation'"
             >
               Стоимость и комплектацию уточняйте у консультанта
             </h5>

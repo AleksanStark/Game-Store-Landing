@@ -189,8 +189,8 @@
             <div class="pm-row">
               <div class="pm-field">
                 <label>Категория</label>
-                <select v-model="form.category_id">
-                  <option value="">Выберите категорию</option>
+                <select v-model="form.category_id" required>
+                  <option value="" disabled>Выберите категорию</option>
                   <option
                     v-for="category in categories"
                     :value="category.id"
@@ -256,6 +256,8 @@
               />
             </div> -->
 
+            <div v-if="status" class="pm-status err">{{ status }}</div>
+
             <div class="pm-actions">
               <button
                 type="submit"
@@ -299,7 +301,7 @@
             <div class="pm-row">
               <div class="pm-field">
                 <label>Категория</label>
-                <select v-model="form.category_id">
+                <select v-model="form.category_id" required>
                   <option value="">Выберите категорию</option>
                   <option
                     v-for="category in categories"
@@ -416,6 +418,8 @@
               />
             </div>
 
+            <div v-if="status" class="pm-status err">{{ status }}</div>
+
             <div class="pm-actions">
               <button
                 type="submit"
@@ -526,16 +530,20 @@ const emptyForm = () => ({
   img_id: 0,
   name: "".toLowerCase(),
   file: null as File | null,
-  category_id: 0,
+  category_id: null as number | null,
   condition: "new",
-  price: "$0",
+  price: "₩0",
   img: "",
 });
 const form = reactive(emptyForm());
 
-const cat = categories.value.find((cat) => cat.name === "PlayStation");
-
 const openCreateModal = () => {
+  Object.assign(form, emptyForm());
+
+  const playstation = categories.value.find(
+    (cat) => cat.name === "PlayStation",
+  );
+  form.category_id = playstation?.id ?? categories.value[0]?.id ?? null;
   isEditing.value = false;
   editingSku.value = null;
   editingId.value = null; // ← добавить
@@ -550,6 +558,7 @@ const openCreateCategoryModal = () => {
 
 const openEditModal = async (product: ProductOut) => {
   Object.assign(form, { ...product });
+  form.price = `₩${product.price}`;
   console.log(form.img_id);
   isEditing.value = true;
   editingSku.value = product.id;
@@ -563,11 +572,7 @@ const closeModal = () => {
   isModalOpen.value = false;
   editingId.value = null;
   editingImages.value = [];
-  ((form.name = ""),
-    (form.price = ""),
-    (form.category_id = cat?.id ? cat.id : 7),
-    (form.condition = "new"),
-    (form.img = ""));
+  Object.assign(form, emptyForm());
 };
 
 const closeCategoryModal = () => {
@@ -624,19 +629,11 @@ const onReplaceFileSelected = async (e: Event) => {
   }
 };
 
-const loadCategories = async () => {
-  categories.value = categoriesResponse.data.value;
-
-  const playstation = categories.value.find(
-    (category) => category.name.toLocaleLowerCase() === "PlayStation",
-  );
-
-  if (playstation) {
-    form.category_id = playstation.id;
-  }
-};
-
 const submitCreateCategory = async () => {
+  if (!form.name) {
+    status.value = "Введите название категории";
+    return;
+  }
   const category = await apiFetch<Category>("/categories", {
     method: "POST",
     body: { name: form.name },
@@ -648,23 +645,35 @@ const submitCreateCategory = async () => {
 };
 
 const submitCreateProduct = async () => {
-  const validPrice = String(form.price).replace("$", "").trim();
+  const validPrice = form.price.replace("₩", "").trim();
+  const numericPrice = Number(validPrice);
+
+  if (!form.category_id) {
+    status.value = "Выберите категорию";
+    return;
+  }
+
+  if (!validPrice || isNaN(numericPrice) || numericPrice <= 0) {
+    status.value = "Введите цену больше 0";
+    return;
+  }
+
+  if (!form.file) {
+    status.value = "Файл не выбран";
+    return;
+  }
+
   const product = await apiFetch<Product>("/products", {
     method: "POST",
     body: {
       category_id: form.category_id,
       name: form.name,
-      price: Number(validPrice),
+      price: validPrice,
       condition: form.condition,
     },
   });
 
   const formData = new FormData();
-
-  if (!form.file) {
-    console.log("Файл не выбран");
-    return;
-  }
 
   formData.append("file", form.file);
 
@@ -690,13 +699,30 @@ const submitCreateProduct = async () => {
 };
 
 const submitUpdateProduct = async () => {
-  const validPrice = String(form.price).replace("$", "").trim();
+  const validPrice = form.price.replace("₩", "").trim();
+  const numericPrice = Number(validPrice);
+
+  if (!form.category_id) {
+    status.value = "Выберите категорию";
+    return;
+  }
+
+  if (!validPrice || isNaN(numericPrice) || numericPrice <= 0) {
+    status.value = "Введите цену больше 0";
+    return;
+  }
+
+  if (!form.file) {
+    status.value = "Файл не выбран";
+    return;
+  }
+
   const updatedProduct = await apiFetch<Product>(`/products/${form.id}`, {
     method: "PATCH",
     body: {
       category_id: form.category_id,
       name: form.name,
-      price: Number(validPrice),
+      price: validPrice,
       condition: form.condition,
     },
   });
@@ -717,8 +743,6 @@ const confirmDelete = async (product: ProductOut) => {
     method: "DELETE",
   });
 
-  console.log(product.img_id, product.id);
-
   products.value = products.value.filter((p) => p.id !== product.id);
 };
 
@@ -733,7 +757,7 @@ const confirmDeleteCategory = async (category: Category) => {
 };
 
 onMounted(async () => {
-  await loadCategories();
+  categories.value = categoriesResponse.data.value;
   products.value = productsResponse.data.value;
 });
 </script>

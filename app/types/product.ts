@@ -2,7 +2,7 @@ export interface ProductOut {
   id: number;
   img_id: number;
   name: string;
-  price: number;
+  price: string;
   category_id: number;
   category_name: string;
   condition: "new" | "used";
@@ -12,7 +12,7 @@ export interface ProductOut {
 export interface Product {
   id: number;
   name: string;
-  price: number;
+  price: string;
   category_id: number;
   condition: "new" | "used";
 }
