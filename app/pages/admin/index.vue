@@ -712,11 +712,6 @@ const submitUpdateProduct = async () => {
     return;
   }
 
-  if (!form.file) {
-    status.value = "Файл не выбран";
-    return;
-  }
-
   const updatedProduct = await apiFetch<Product>(`/products/${form.id}`, {
     method: "PATCH",
     body: {
